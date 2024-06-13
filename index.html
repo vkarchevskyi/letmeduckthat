@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LetMeDuckThatForYou</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form id="search-form" class="search-wrapper">
+        <img src="assets/logo.svg" class="main-logo" alt="">
+        <div class="search-field">
+            <input id="search-input" class="search-field__input" type="text">
+            <button type="submit" class="search-field__button">
+                <img src="assets/search.svg" class="search-icon" alt="">
+            </button>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const searchQuery = document.getElementById('search-input').value;
+
+            if (searchQuery) {
+                window.location = 'https://duckduckgo.com/?q=' + searchQuery;
+            }
+        });
+    </script>
+</body>
+
+</html>
