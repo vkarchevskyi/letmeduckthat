@@ -1,9 +1,22 @@
+@font-face {
+    font-family: 'Proxima nova';
+    src: url('assets/proximanova_regular.ttf') format('truetype');
+    /* IE9 Compat Modes */
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
     background-color: #111;
+}
+
+input,
+a,
+span,
+p {
+    font-family: 'Proxima nova', sans-serif;
 }
 
 .search-wrapper {
@@ -35,7 +48,7 @@ body {
 
 .search-field__input {
     background-color: #333333;
-    width: 40rem;
+    width: 35rem;
     height: 45px;
     border: none;
     border-radius: 0.5rem 0 0 0.5rem;
@@ -43,6 +56,7 @@ body {
     caret-color: #3969ef;
     padding: 0 1rem;
     color: #fff;
+    font-size: 1rem;
 }
 
 .search-field__button {
@@ -50,4 +64,45 @@ body {
     background-color: #333333;
     border: none;
     border-radius: 0 0.5rem 0.5rem 0;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.typing {
+    overflow: hidden;
+    border-right: .15em solid black;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: black;
+    }
+}
+
+#url-wrapper {
+    color: #aaa;
+    visibility: hidden;
+    margin-top: 4rem;
+    font-size: 2rem;
+}
+
+#url-wrapper a {
+    /* text-decoration: inherit; */
+    color: #aaa;
 }
