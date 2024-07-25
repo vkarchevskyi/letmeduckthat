@@ -1,4 +1,4 @@
-const siteUrl = 'http://127.0.0.1:5500';
+const siteUrl = 'https://vkarchevskyi.github.io/letmeduckthat';
 
 document.addEventListener("DOMContentLoaded", function () {
   const params = new Proxy(new URLSearchParams(window.location.search), {
