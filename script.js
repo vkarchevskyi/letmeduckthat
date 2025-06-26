@@ -1,6 +1,10 @@
 const siteUrl = 'https://vkarchevskyi.github.io/letmeduckthat';
+const sun = '☀️';
+const moon = '🌙';
 
 document.addEventListener("DOMContentLoaded", function () {
+  initializeTheme();
+
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
@@ -62,4 +66,36 @@ function registerButtonEvent() {
 
     document.getElementById('url-wrapper').style.visibility = 'visible';
   });
+}
+
+function initializeTheme() {
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.querySelector('.theme-toggle-icon');
+
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+
+  if (savedTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    themeIcon.textContent = sun;
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    themeIcon.textContent = moon;
+  }
+
+  themeToggle.addEventListener('click', toggleTheme);
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const themeIcon = document.querySelector('.theme-toggle-icon');
+
+  if (currentTheme === 'light') {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'dark');
+    themeIcon.textContent = moon;
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+    themeIcon.textContent = sun;
+  }
 }
